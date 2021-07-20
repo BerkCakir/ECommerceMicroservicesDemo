@@ -1,0 +1,2 @@
+﻿//Mongodb #1 add mongodb.driver nuget
+//Automapper #1 add AutoMapper.Extensions.Microsoft.DependencyInjection 
