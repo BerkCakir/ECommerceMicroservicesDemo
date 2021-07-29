@@ -17,6 +17,8 @@ namespace IdentityServer
                   new ApiResource("product_catalog"){Scopes={"product_catalog_full_permission" } },
                   new ApiResource("photo_stock"){Scopes={ "photo_stock_full_permission" } },
                   new ApiResource("shopping_cart"){Scopes={ "shopping_cart_full_permission" } },
+                  new ApiResource("discount"){Scopes={ "discount_full_permission" } },
+                  new ApiResource("order"){Scopes={ "order_full_permission" } },
                   new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
               };
 
@@ -35,6 +37,8 @@ namespace IdentityServer
                 new ApiScope("product_catalog_full_permission","Catalog API erişimi"),
                 new ApiScope("photo_stock_full_permission","Photo Stock API erişimi"),
                 new ApiScope("shopping_cart_full_permission","Shopping Cart API erişimi"),
+                new ApiScope("discount_full_permission","Discount API erişimi"),
+                new ApiScope("order_full_permission","Order API erişimi"),
                 new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
             };
 
@@ -55,7 +59,8 @@ namespace IdentityServer
                     ClientId = "WebClientForUser",
                     ClientSecrets={new Secret("password123".Sha256())},
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                    AllowedScopes = { "shopping_cart_full_permission", IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId,
+                    AllowedScopes = { "shopping_cart_full_permission","discount_full_permission","order_full_permission",
+                                    IdentityServerConstants.StandardScopes.Email, IdentityServerConstants.StandardScopes.OpenId,
                                     IdentityServerConstants.StandardScopes.Profile, IdentityServerConstants.StandardScopes.OfflineAccess,
                                     IdentityServerConstants.LocalApi.ScopeName ,"roles"},
                     AccessTokenLifetime = 3600,
