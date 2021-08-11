@@ -16,7 +16,7 @@ namespace Services.ProductImages.Controllers
     [ApiController]
     public class ImagesController : CustomControllerBase
     {
-        [HttpPost ]
+        [HttpPost]
         public async Task<IActionResult> SaveImage(IFormFile image, CancellationToken cancellationToken)
         {
             if (image != null && image.Length > 0)
@@ -26,7 +26,7 @@ namespace Services.ProductImages.Controllers
                 using var stream = new FileStream(path, FileMode.Create);
                 await image.CopyToAsync(stream, cancellationToken);
 
-                var returnPath = "images/" + image.FileName;
+                var returnPath = image.FileName;
 
                 ImageDto imageDto = new() { Url = returnPath };
 
@@ -34,9 +34,9 @@ namespace Services.ProductImages.Controllers
             }
             return CreateResult(Response<ImageDto>.Fail("Empty image", 400));
         }
-        public IActionResult DeleteImage(string url)
+        public IActionResult DeleteImage(string imageUrl)
         {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", url);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", imageUrl);
             if (!System.IO.File.Exists(path))
             {
                 return CreateResult(Response<ImageDto>.Fail("Image not found", 400));

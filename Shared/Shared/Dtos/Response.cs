@@ -12,25 +12,28 @@ namespace Shared.Dtos
         [JsonIgnore]
         public int StatusCode { get; set; }
 
+        [JsonIgnore]
+        public bool IsSuccessful { get; set; }
+
         public List<string> ErrorList { get; set; }
 
         // Example of Static Factory Pattern - create an object with a static method
         public static Response<T> Success(T data, int statusCode)
         {
-            return new Response<T> { Data = data, StatusCode = statusCode };
+            return new Response<T> { Data = data, StatusCode = statusCode, IsSuccessful = true };
         }
 
         public static Response<T> Success( int statusCode)
         {
-            return new Response<T> { Data = default(T), StatusCode = statusCode };
+            return new Response<T> { Data = default(T), StatusCode = statusCode, IsSuccessful = true };
         }
         public static Response<T> Fail(List<string> errorList, int statusCode)
         {
-            return new Response<T> { ErrorList = errorList, StatusCode = statusCode };
+            return new Response<T> { ErrorList = errorList, StatusCode = statusCode, IsSuccessful = false };
         }
         public static Response<T> Fail(string error, int statusCode)
         {
-            return new Response<T> { ErrorList = new List<string> { error }, StatusCode = statusCode };
+            return new Response<T> { ErrorList = new List<string> { error }, StatusCode = statusCode, IsSuccessful = false };
         }
 
     }

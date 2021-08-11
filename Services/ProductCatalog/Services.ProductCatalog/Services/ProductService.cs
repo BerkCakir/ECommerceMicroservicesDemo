@@ -55,7 +55,7 @@ namespace Services.ProductCatalog.Services
             return Response<ProductDto>.Fail("Product Not Found", 404);
         }
 
-        public async Task<Response<List<ProductDto>>> GetAllByCreatedUserIdAsync(string createdUserId)
+        public async Task<Response<List<ProductDto>>> GetAllByUserId(string createdUserId)
         {
             var products = await _productCollection.Find<Product>(p => p.CreatedUserId == createdUserId).ToListAsync();
 

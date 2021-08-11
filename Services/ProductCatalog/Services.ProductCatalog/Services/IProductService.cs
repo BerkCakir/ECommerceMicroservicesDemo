@@ -11,7 +11,7 @@ namespace Services.ProductCatalog.Services
     {
         Task<Response<List<ProductDto>>> GetAllAsync();
         Task<Response<ProductDto>> GetByIdAsync(string id);
-        Task<Response<List<ProductDto>>> GetAllByCreatedUserIdAsync(string createdUserId);
+        Task<Response<List<ProductDto>>> GetAllByUserId(string createdUserId);
         Task<Response<ProductDto>> CreateAsync(ProductCreateDto productCreateDto);
         Task<Response<ProductDto>> UpdateAsync(ProductUpdateDto productUpdateDto);
         Task<Response<ProductDto>> DeleteAsync(string id);

@@ -37,10 +37,10 @@ namespace Services.ProductCatalog.Controllers
         }
 
         [HttpGet]
-        [Route("/api/[controller]/GetAllByCreatedUserId/{createdUserId}")]
-        public async Task<IActionResult> GetAllByCreatedUserId(string createdUserId)
+        [Route("/api/[controller]/GetAllByUserId/{createdUserId}")]
+        public async Task<IActionResult> GetAllByUserId(string createdUserId)
         {
-            var response = await _productService.GetAllByCreatedUserIdAsync(createdUserId);
+            var response = await _productService.GetAllByUserId(createdUserId);
 
             return CreateResult(response);
         }

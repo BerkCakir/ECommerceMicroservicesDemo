@@ -34,6 +34,7 @@ namespace Services.ShoppingCart.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveOrUpdateShoppingCart(ShoppingCartDto shoppingCartDto)
         {
+            shoppingCartDto.UserId = _sharedIdentityService.GetUserId;
             return CreateResult(await _shoppingCartService.SaveOrUpdate(shoppingCartDto));
         }
         [HttpDelete]
