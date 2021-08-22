@@ -92,9 +92,9 @@ namespace Web.Services
             {
                 return null;
             }
-            var basketViewModel = await response.Content.ReadFromJsonAsync<Response<ShoppingCartViewModel>>();
+            var shoppingCartViewModel = await response.Content.ReadFromJsonAsync<Response<ShoppingCartViewModel>>();
 
-            return basketViewModel.Data;
+            return shoppingCartViewModel.Data;
         }
 
         public async Task<bool> RemoveItem(string productId)

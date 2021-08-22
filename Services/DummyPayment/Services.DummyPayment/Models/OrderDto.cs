@@ -1,21 +1,25 @@
-﻿using MediatR;
-using Services.Order.Application.Dtos;
-using Shared.Dtos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Services.Order.Application.Commands
+namespace Services.DummyPayment.Models
 {
-    public class CreateOrderCommand : IRequest<Response<CreatedOrderDto>>
+    public class OrderDto
     {
+        public OrderDto()
+        {
+            OrderItems = new List<OrderItemDto>();
+        }
+
         public string BuyerId { get; set; }
 
         public List<OrderItemDto> OrderItems { get; set; }
 
         public AddressDto Address { get; set; }
+    }
+    public class AddressDto
+    {
         public string Province { get; set; }
 
         public string District { get; set; }
@@ -25,5 +29,12 @@ namespace Services.Order.Application.Commands
         public string ZipCode { get; set; }
 
         public string Line { get; set; }
+    }
+    public class OrderItemDto
+    {
+        public string ProductId { get; set; }
+        public string ProductName { get; set; }
+        public string PictureUrl { get; set; }
+        public Decimal Price { get; set; }
     }
 }

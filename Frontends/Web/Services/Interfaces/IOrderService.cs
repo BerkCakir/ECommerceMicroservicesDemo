@@ -10,7 +10,7 @@ namespace Web.Services.Interfaces
     {    
         Task<OrderCreatedViewModel> CreateOrder(CheckOutInfoInput checkoutInfoInput);
 
-        Task SuspendOrder(CheckOutInfoInput checkoutInfoInput);
+        Task<OrderSuspendViewModel> SuspendOrder(CheckOutInfoInput checkoutInfoInput);
 
         Task<List<OrderViewModel>> GetOrder();
     }
